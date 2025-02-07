@@ -40,6 +40,26 @@ const db = new sqlite3.Database(
           );
         }
       });
+      db.run(`DROP TABLE IF EXISTS comments`, (err) => {
+        if (err) {
+          console.error(err.message);
+        } else {
+          db.run(
+            `CREATE TABLE IF NOT EXISTS comments (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              name TEXT NOT NULL,
+              address TEXT,
+              comment TEXT NOT NULL,
+              sentiment TEXT NOT NULL
+            )`,
+            (err) => {
+              if (err) {
+                console.error(err.message);
+              }
+            }
+          );
+        }
+      });
     }
   }
 );

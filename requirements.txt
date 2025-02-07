@@ -1,0 +1,3 @@
+Flask
+transformers
+torch  # If you're using PyTorch as the backend for Hugging Face models
